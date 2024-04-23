@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      flash[:success] = "Object successfully created"
+      flash[:notice] = "Article created"
       redirect_to @article 
     else
       flash[:error] = "Something went wrong"
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
   
   def update
       if @article.update(article_params)
-        flash[:success] = "Object was successfully updated"
+        flash[:notice] = "Article updated"
         redirect_to @article
       else
         flash[:error] = "Something went wrong"

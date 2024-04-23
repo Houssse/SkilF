@@ -1,0 +1,6 @@
+<% if notice %>
+  <div data-controller="flash" class="alert alert-info alert-dismissible fade show m-1" role="alert">
+    <%= notice %>
+  <button type="button" data-action="flash#dismiss" class="btn-close" aria-label="Close"> </button>
+  </div>
+<% end %>
