@@ -10,18 +10,25 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
+        <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Menu
           </a>
           <ul class="dropdown-menu">
             <li><a><%= link_to "New Article", new_article_path, class: "dropdown-item" %></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a><%= link_to "Edit profil", edit_user_registration_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li> <%= link_to "Exit", destroy_user_session_path, class: "dropdown-item", 
+                  data: { turbo_method: :delete } %> </li>
           </ul>
         </li>
+        <% else %>
+          <form class="container-fluid justify-content-start m-1">
+            <%= link_to "Login", new_user_session_path, class: "btn btn-sm btn-outline-primary me-2" %>
+            <%= link_to "registration", new_user_registration_path, class: "btn btn-sm btn-outline-secondary" %>
+          </form>
+        <% end %>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
