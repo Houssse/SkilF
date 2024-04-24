@@ -2,6 +2,10 @@
 
 <h1 class="mb-4"> <%= @article.title %></h1>
 
+<time datetime="<%= @article.formatted_created_at %>">
+  <%= @article.formatted_created_at %>
+</time>
+
 <div class="lead my-3">
   <%= @article.body %>
 </div>

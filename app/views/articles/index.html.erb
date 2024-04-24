@@ -3,6 +3,10 @@
   <div class="card-body">
     <h4><%= article.title %></h4>
 
+    <time datetime="<%= article.formatted_created_at %>">
+      <%= article.formatted_created_at %>
+    </time>
+
     <section class="card-text">
       <p class="m-2">
         <%= article.body %>
