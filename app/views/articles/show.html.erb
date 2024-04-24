@@ -1,13 +1,13 @@
-<h1> Article </h1>
 
-<%= @article.title %> <br>
 
-<%= @article.body %> <br>
+<h1 class="mb-4"> <%= @article.title %></h1>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+<div class="lead my-3">
+  <%= @article.body %>
+</div>
+
+<div clas="btn-group">
+  <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning"%>
+  <%= link_to "Delete", article_path(@article), class: "btn btn-danger",
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+<div>
