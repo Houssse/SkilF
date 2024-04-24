@@ -3,14 +3,19 @@
   <div class="card-body">
     <h4><%= article.title %></h4>
 
-    <time datetime="<%= article.formatted_created_at %>">
-      <%= article.formatted_created_at %>
-    </time>
-
     <section class="card-text">
-      <p class="m-2">
-        <%= article.body %>
-      </p>
+      <blockquote class="blockquote">
+        <p class="m-2">
+          <%= article.body %>
+        </p>
+      </blockquote>
+
+      <figcaption class="blockquote-footer mb-2"><%= article.user.name %>
+
+      <time datetime="<%= article.formatted_created_at %>">
+        <%= article.formatted_created_at %>
+      </time>
+      </figcaption>
     </section>
 
     <%= link_to "Show", article_path(article), class: "btn btn-primary"%>
