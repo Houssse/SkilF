@@ -19,8 +19,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article created"
       redirect_to @article 
     else
-      flash[:error] = "Something went wrong"
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
   
@@ -32,8 +31,7 @@ class ArticlesController < ApplicationController
         flash[:notice] = "Article updated"
         redirect_to @article
       else
-        flash[:error] = "Something went wrong"
-        render 'edit'
+        render 'edit', status: :unprocessable_entity
       end
   end
 

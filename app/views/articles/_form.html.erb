@@ -1,19 +1,13 @@
+<%= render 'shared/errors', object: @article %>
+
 <%= form_with model: @article do |form|  %>
-
-
-  <div class="row justify-content-md-center">
-    <div class="col-6">
-      <div class="mb-3">
-        <%= form.text_field :title,  class: "form-control", placeholder: "Title" %>
-      </div>
-  
-      <div class="mb-3">
-        <%= form.text_area :body, class: "form-control", id: "exampleFormControlTextarea1", rows: "3", placeholder: "Text"  %>
-      </div>
-      
-      <%= form.submit class: "btn btn-primary" %>
-    </div>
+  <div class="mb-3">
+    <%= form.text_field :title,  class: "form-control", placeholder: "Title" %>
   </div>
-
-
+  
+  <div class="mb-3">
+    <%= form.text_area :body, class: "form-control", id: "exampleFormControlTextarea1", rows: "3", placeholder: "Text"  %>
+  </div>
+  
+  <%= form.submit class: "btn btn-primary" %>
 <% end %>
