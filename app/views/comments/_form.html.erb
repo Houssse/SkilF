@@ -3,11 +3,10 @@
   <%= hidden_field_tag :parent_id, local_assigns[:parent]&.id %>
   <form>
   <div class="mb-3 col-3">
-    <%= f.label :content, class: "form-label" %>
     <%= f.text_area :content, class: "form-control" %>
   </div>
 
-    <%= f.submit "Create comment", class: "btn btn-secondary" %>
+    <%= f.submit "Create comment", class: "btn btn-secondary mb-3" %>
 
     <% target = local_assigns[:parent] || comment %>
     <% if target&.persisted?%>

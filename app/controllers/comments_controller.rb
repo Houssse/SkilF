@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :set_parent, only: %i[show new create ]
 
   def index 
-    @comments = @article.comments.where(parent_id: nil)
+    @comments = @article.comments.where(parent_id: nil).order(created_at: :desc)
   end
 
   def new
