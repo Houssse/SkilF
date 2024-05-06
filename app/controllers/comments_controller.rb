@@ -1,11 +1,24 @@
 class CommentsController < ApplicationController
   before_action :set_article
-  before_action :set_comment, only: :show
+  before_action :set_comment, only: %i[show destroy]
 
   def index 
     @comments = @article.comments
   end
 
+  def new
+    @comment = Comment.new
+  end
+
+  def create
+    @comment = @article.comments.create(comment_params)
+    @comment.user = current_user
+  end
+
+  def destroy
+    @comment.destroy
+  end
+  
   private
 
   def set_article
@@ -14,5 +27,9 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find_by(id: params[:id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end
