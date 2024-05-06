@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: skil_f_production
-  username: skil_f
-  password: <%= ENV["SKIL_F_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
