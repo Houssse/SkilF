@@ -1,0 +1,5 @@
+<%= turbo_frame_tag dom_id(@article, :comments) do %>
+  <% @comments.each do |comment| %>
+    <%= turbo_frame_tag comment, src: comment_path(comment, article_id: @article.id) %>
+  <% end %>
+<% end %>
