@@ -1,18 +1,17 @@
 <%= form_with(model: comment) do |f| %>
   <%= hidden_field_tag :article_id, article.id %>
   <%= hidden_field_tag :parent_id, local_assigns[:parent]&.id %>
-
-  <div>
-    <%= f.label :content, style: "display: block" %>
-    <%= f.text_area :content %>
+  <form>
+  <div class="mb-3 col-3">
+    <%= f.label :content, class: "form-label" %>
+    <%= f.text_area :content, class: "form-control" %>
   </div>
 
-  <div>
-    <%= f.submit %>
+    <%= f.submit "Create comment", class: "btn btn-secondary" %>
 
     <% target = local_assigns[:parent] || comment %>
     <% if target&.persisted?%>
       <%= link_to "Cancel", comment_path(target, article_id: article.id) %>
     <% end %>
-  </div>
+  </form>
 <% end %>

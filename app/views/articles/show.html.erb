@@ -14,7 +14,7 @@
       data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
 <div>
 
-<h3> Comments </h3>
 
-<%= turbo_frame_tag dom_id(@article, :new_comment), src: new_comment_path(article_id: @article.id) %>
-<%= turbo_frame_tag dom_id(@article, :comments), src: comments_path(article_id: @article.id) %>
+  <h2> Comments </h2>
+  <%= turbo_frame_tag dom_id(@article, :new_comment), src: new_comment_path(article_id: @article.id) %>
+  <%= turbo_frame_tag dom_id(@article, :comments), src: comments_path(article_id: @article.id) %>

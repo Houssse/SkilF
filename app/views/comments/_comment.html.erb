@@ -1,5 +1,7 @@
 <%= turbo_frame_tag comment do %>
-  <p><%= comment.content %></p>
+
+  <h5><%= comment.user.name %></h5>
+  <p class="card-text"><%= comment.content %></p>
 
   <div style="display: flex; flex-direction: row">
     <%= link_to "Edit", edit_comment_path(comment, article_id: article.id) %> |
