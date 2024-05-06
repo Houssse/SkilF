@@ -2,6 +2,7 @@
   <p><%= @comment.content %></p>
 
   <div>
-    <%= button_to "Destroy", @comment, method: :delete %>
-  </div>
+    <%= link_to "Edit", edit_comment_path(@comment, article_id: @article.id) %> |
+    <%= link_to "Destroy", @comment, date: {turbo_method: :delete} %>
+  </div class="mb-3">
 <% end %>

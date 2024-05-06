@@ -8,5 +8,6 @@
 
   <div>
     <%= f.submit %>
+    <%= link_to "Cancel", comment_path(comment, article_id: article.id) if comment.persisted? %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_article
-  before_action :set_comment, only: %i[show destroy]
+  before_action :set_comment, only: %i[show edit update destroy]
 
   def index 
     @comments = @article.comments
@@ -13,6 +13,13 @@ class CommentsController < ApplicationController
   def create
     @comment = @article.comments.create(comment_params)
     @comment.user = current_user
+  end
+
+  def edit
+  end
+  
+  def update
+    @comment.update(comment_params)
   end
 
   def destroy
