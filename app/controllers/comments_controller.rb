@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_article
   before_action :set_comment, only: %i[show edit update destroy]
+  before_action :set_parent, only: %i[show new create ]
 
   def index 
-    @comments = @article.comments
+    @comments = @article.comments.where(parent_id: nil)
   end
 
   def new
@@ -12,7 +13,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.create(comment_params)
+    @comment.parent = @parent
     @comment.user = current_user
+    @comment.save
   end
 
   def edit
@@ -34,6 +37,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find_by(id: params[:id])
+  end
+
+  def set_parent
+    @parent = Comment.find_by(id: params[:parent_id])
   end
 
   def comment_params

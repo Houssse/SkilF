@@ -1,3 +1,3 @@
-<%= turbo_frame_tag dom_id(@article, :new_comment) do %>
-  <%= render 'form', comment: @comment, article: @article %>
+<%= turbo_frame_tag dom_id(@parent || @article, :new_comment) do %>
+  <%= render 'form', comment: @comment, article: @article, parent: @parent %>
 <% end %>

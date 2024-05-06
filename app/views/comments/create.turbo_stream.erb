@@ -1,7 +1,11 @@
-<%= turbo_stream.prepend dom_id(@article, :comments) do %>
-  <%= turbo_frame_tag @comment, src: comment_path(@comment, article_id: @article.id) %>
+<%= turbo_stream.prepend dom_id(@parent || @article, :comments) do %>
+  <%= turbo_frame_tag dom_id(@comment, :wrapper), src: comment_path(@comment, article_id: @article.id, parent_id: @parent&.id) %>
 <% end %>
 
-<%= turbo_stream.replace dom_id(@article, :new_comment) do %>
-  <%= turbo_frame_tag dom_id(@article, :new_comment), src: new_comment_path(article_id: @article.id) %>
+<%= turbo_stream.replace dom_id(@parent || @article, :new_comment) do %>
+  <% if @parent %>
+    <%= turbo_frame_tag dom_id(@parent, :new_comment) %>
+  <% else %>
+    <%= turbo_frame_tag dom_id(@article, :new_comment), src: new_comment_path(article_id: @article.id) %>
+  <% end %>
 <% end %>

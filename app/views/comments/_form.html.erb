@@ -1,5 +1,6 @@
 <%= form_with(model: comment) do |f| %>
   <%= hidden_field_tag :article_id, article.id %>
+  <%= hidden_field_tag :parent_id, local_assigns[:parent]&.id %>
 
   <div>
     <%= f.label :content, style: "display: block" %>
@@ -8,6 +9,10 @@
 
   <div>
     <%= f.submit %>
-    <%= link_to "Cancel", comment_path(comment, article_id: article.id) if comment.persisted? %>
+
+    <% target = local_assigns[:parent] || comment %>
+    <% if target&.persisted?%>
+      <%= link_to "Cancel", comment_path(target, article_id: article.id) %>
+    <% end %>
   </div>
 <% end %>
