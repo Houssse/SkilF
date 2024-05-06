@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
+  has_many :comments, inverse_of: :article
 
   has_rich_text :content
 
